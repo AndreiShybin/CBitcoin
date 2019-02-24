@@ -1,0 +1,5 @@
+Building Bitcoin Private
+
+See the Bitcoin Private github wiki (https://github.com/CBitcoin/ClassicBitcoin/wiki) for instructions on building cbtcd,
+the intended-for-services, no-graphical-interface, reference
+implementation of Bitcoin Private.
