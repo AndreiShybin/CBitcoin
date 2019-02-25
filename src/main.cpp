@@ -3247,10 +3247,16 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
         return state.DoS(100, error("%s: fork block does not look like fork block", __func__),
                          REJECT_INVALID, "bad-fork-hashreserved");
 
+#ifdef FORK_CB_INPUT
+    if (!isForkBlock(nHeight)) { //If current block is FORK, don't check work r$
+#endif
     // Check proof of work
     if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
         return state.DoS(100, error("%s: incorrect proof of work", __func__),
                          REJECT_INVALID, "bad-diffbits");
+#ifdef FORK_CB_INPUT
+    }
+#endif
 
     // Check timestamp against prev
     if (block.GetBlockTime() <= pindexPrev->GetMedianTimePast())
