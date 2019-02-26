@@ -136,14 +136,14 @@ public:
                 {      0, consensus.hashGenesisBlock },
                 {  30000, uint256S("0x000000005c2ad200c3c7c8e627f67b306659efca1268c9bb014335fdadc0c392") },
                 { 160000, uint256S("0x000000065093005a1a46ee95d6d66c2b07008220ca64dd3b3a93bbd1945480c0") },
-                { 472028, uint256S("0x000000001b4f8ecfda3210c53f2ce8fdd38ec7e1d9ba355f49cb949505331626") },
-                { 472029, uint256S("0x55552b9e450248707d0f5a03799f4cde8f7965adf747eaf10f69a9ad9c6e3817") },
-                { 473029, uint256S("0xf516081b5e7b929e66e3d2a7641d251b035fe8914c8c51b70ecca786cd99a96c") },
-                { 474029, uint256S("0x0c4d5d4571913423c6f39a4939e299b749448e342e8aa84a98eaa2659f9ab3ca") },
-                { 475029, uint256S("0xb2ec0e09682f0bed51be84f690ab0da3a9ee0376eaff6928d0bfacf3ffed5028") },
-                { 477162, uint256S("0x4f4a2b0a920a1f38367a3ad8e3ca193c5e3dfdebb27246867b6dcd057b08401a") },
+//                { 472028, uint256S("0x000000001b4f8ecfda3210c53f2ce8fdd38ec7e1d9ba355f49cb949505331626") },
+//                { 472029, uint256S("0x55552b9e450248707d0f5a03799f4cde8f7965adf747eaf10f69a9ad9c6e3817") },
+//                { 473029, uint256S("0xf516081b5e7b929e66e3d2a7641d251b035fe8914c8c51b70ecca786cd99a96c") },
+//                { 474029, uint256S("0x0c4d5d4571913423c6f39a4939e299b749448e342e8aa84a98eaa2659f9ab3ca") },
+//                { 475029, uint256S("0xb2ec0e09682f0bed51be84f690ab0da3a9ee0376eaff6928d0bfacf3ffed5028") },
+                { 477162, uint256S("0x503e5c86cc06f8349e2c3f405d3eb256f907c2a310abd58eaa631a9f3bb5c343") },
             },
-            1550851043,     // * UNIX timestamp of last checkpoint block
+            1551186506,     // * UNIX timestamp of last checkpoint block
             52706052,       // * total number of transactions between genesis and last checkpoint
                             //   (the tx=... number in the SetBestChain debug.log lines)
             500            // * estimated number of transactions per day after checkpoint

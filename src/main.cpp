@@ -1951,13 +1951,18 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
             // The CCoins serialization does not serialize negative numbers.
             // No network rules currently depend on the version here, so an inconsistency is harmless
             // but it must be corrected before txout nversion ever influences a network rule.
+//#ifdef FORK_CB_INPUT
+//    if (!isForkBlock(pindex->nHeight)) {
+//#endif
             if (outsBlock.nVersion < 0)
                 outs->nVersion = outsBlock.nVersion;
-            if (*outs != outsBlock) {
-                fClean = fClean && error("DisconnectBlock(): added transaction mismatch? database corrupted");
-                LogPrintf("Transaction mismatch?: id: %d: Amount: %d; ScriptPubKey: %s\n", i, tx.vout[0].nValue, tx.vout[0].scriptPubKey.ToString());
-            }
-
+//            if (*outs != outsBlock) {
+//                fClean = fClean && error("DisconnectBlock(): added transaction mismatch? database corrupted");
+//                LogPrintf("Transaction mismatch?: id: %d: Amount: %d; ScriptPubKey: %s\n", i, tx.vout[0].nValue, tx.vout[0].scriptPubKey.ToString());
+//            }
+//#ifdef FORK_CB_INPUT
+//    }
+//#endif
         // remove outputs
         outs->Clear();
         }
@@ -3187,8 +3192,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state,
                          REJECT_INVALID, "bad-cb-missing");
 
     //fork blocks might have up to fork pre-defined value coinbases and nothing else
-#ifdef FORK_CB_INPUT
-     if (isTipInForkRange()) {
+     if (looksLikeForkBlockHeader(block)) {
         if (block.vtx.size() > forkCBPerBlock)
             return state.DoS(100, error("CheckBlock(): fork block: too many txns %d > %d coinbase txns", block.vtx.size(), forkCBPerBlock),
                              REJECT_INVALID, "bad-fork-too-many-tx");
@@ -3198,14 +3202,11 @@ bool CheckBlock(const CBlock& block, CValidationState& state,
                 return state.DoS(100, error("CheckBlock(): fork block: non-coinbase found"),
                                  REJECT_INVALID, "bad-fork-non-cb");
     } else {
-#endif
         for (unsigned int i = 1; i < block.vtx.size(); i++)
             if (block.vtx[i].IsCoinBase())
                 return state.DoS(100, error("CheckBlock(): more than one coinbase"),
                                 REJECT_INVALID, "bad-cb-multiple");
-#ifdef FORK_CB_INPUT
-    }
-#endif
+}
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, block.vtx)
