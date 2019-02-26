@@ -600,7 +600,7 @@ inline bool isNextTipInForkRange()
 
 inline bool looksLikeForkBlockHeader(const CBlockHeader& header)
 {
-    return header.hashReserved == uint256();
+    return header.hashReserved == forkExtraHashSentinel;
 }
 
 inline uint64_t bytes2uint64(char *array)

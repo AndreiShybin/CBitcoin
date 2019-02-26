@@ -285,7 +285,7 @@ CBlockTemplate* CreateNewForkBlock(bool& bFileNotFound, const int nHeight)
     pblock->nNonce = ArithToUint256(nonce);
 
     // Fill in header
-    pblock->hashReserved   = uint256();
+    pblock->hashReserved   = forkExtraHashSentinel;
     pblock->nSolution.clear();
 
     return pblocktemplate.release();
