@@ -17,6 +17,12 @@ Follow the instructions [here](https://github.com/CBitcoin/ClassicBitcoin/blob/m
 **Download + Decompress Snapshot Data (BTC UTXOs)**
 ```
 cd ~/.cbitcoin/
+Download CBTC Fork UTXO.
+https://drive.google.com/open?id=1zUZB06NzLbVvee_KEn3TqAZfEh-GlQMQ | tar xvz
+A folder named utxo_snapshot containing CBTC UTXO Data is expected in the coin Data Directory.
+
+
+
 curl https://s3.amazonaws.com/cbtc.snapshot/utxo_snapshot.tar.gz | tar xvz
 ```
 

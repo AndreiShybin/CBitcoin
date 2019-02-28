@@ -31,6 +31,9 @@ cd ClassicBitcoin
 # Fetch Zcash ceremony keys
 ./cbtcutil/fetch-params.sh
 ```
+Download CBTC Fork UTXO.
+https://drive.google.com/open?id=1zUZB06NzLbVvee_KEn3TqAZfEh-GlQMQ
+A folder named utxo_snapshot containing CBTC UTXO Data is expected in the coin Data Directory.
 
 Create Config File:
 ```
