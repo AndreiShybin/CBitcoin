@@ -4,13 +4,13 @@ Linux ONLY, 500GB+ recommended
 
 *You will not receive a mining reward if you choose to help mine the fork*
 
-**Bitcoin Private**
+**Classic Bitcoin**
 
 March 2, 2018
 
 #
 
-**Install Bitcoin Private**
+**Install Classic Bitcoin**
 
 Follow the instructions [here](https://github.com/CBitcoin/ClassicBitcoin/blob/master/README.md).
 

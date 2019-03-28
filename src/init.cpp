@@ -690,7 +690,7 @@ static void ZC_LoadParams()
 
     if (!(boost::filesystem::exists(pk_path) && boost::filesystem::exists(vk_path))) {
         uiInterface.ThreadSafeMessageBox(strprintf(
-            _("Cannot find the Bitcoin Private network parameters in the following directory:\n"
+            _("Cannot find the Classic Bitcoin network parameters in the following directory:\n"
               "%s\n"
               "Please run 'zcash-fetch-params' or './cbtcutil/fetch-params.sh' and then restart."),
                 ZC_GetParamsDir()),
@@ -812,7 +812,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     fLogIPs = GetBoolArg("-logips", false);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Bitcoin Private version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
+    LogPrintf("Classic Bitcoin version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
 
     // when specifying an explicit binding address, you want to listen on it
     // even when -connect or -proxy is specified
@@ -1078,7 +1078,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     // Sanity check
     if (!InitSanityCheck())
-        return InitError(_("Initialization sanity check failed. Bitcoin Private is shutting down."));
+        return InitError(_("Initialization sanity check failed. Classic Bitcoin is shutting down."));
 
     std::string strDataDir = GetDataDir().string();
 #ifdef ENABLE_WALLET
@@ -1094,9 +1094,9 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     try {
         static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
         if (!lock.try_lock())
-            return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitcoin Private is probably already running."), strDataDir));
+            return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Classic Bitcoin is probably already running."), strDataDir));
     } catch(const boost::interprocess::interprocess_exception& e) {
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Bitcoin Private is probably already running.") + " %s.", strDataDir, e.what()));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. Classic Bitcoin is probably already running.") + " %s.", strDataDir, e.what()));
     }
 
 #ifndef WIN32
@@ -1617,10 +1617,10 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 #ifdef ENABLE_MINING
  #ifndef ENABLE_WALLET
     if (GetBoolArg("-minetolocalwallet", false)) {
-        return InitError(_("Bitcoin Private was not built with wallet support. Set -minetolocalwallet=0 to use -mineraddress, or rebuild Bitcoin Private with wallet support."));
+        return InitError(_("Classic Bitcoin was not built with wallet support. Set -minetolocalwallet=0 to use -mineraddress, or rebuild Classic Bitcoin with wallet support."));
     }
     if (GetArg("-mineraddress", "").empty() && GetBoolArg("-gen", false)) {
-        return InitError(_("Bitcoin Private was not built with wallet support. Set -mineraddress, or rebuild Bitcoin Private with wallet support."));
+        return InitError(_("Classic Bitcoin was not built with wallet support. Set -mineraddress, or rebuild Classic Bitcoin with wallet support."));
     }
  #endif // !ENABLE_WALLET
 
